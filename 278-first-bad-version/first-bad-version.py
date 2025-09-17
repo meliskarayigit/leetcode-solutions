@@ -2,14 +2,11 @@
 
 class Solution:
     def firstBadVersion(self, n: int) -> int:
-       left= 1
-       right =  n
-       while left < right:
-            mid = (left + right) // 2
+        first, last = 1, n  
+        while first <= last:
+            mid = (first + last) // 2
             if isBadVersion(mid):
-                # mid bad
-                right = mid
+                last = mid - 1   #-
             else:
-                # mid not bad
-                left = mid + 1
-       return left
+                first = mid + 1  
+        return first  
